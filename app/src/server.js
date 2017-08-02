@@ -12,12 +12,10 @@ var multer=require('multer');
 var upload=multer({dest: '/uploads'});
 var flash = require('connect-flash');
 var bcrypt=require('bcryptjs');
-var mongo=require('mongodb');
-var mongoose=require('mongoose');
-var db=mongoose.connection;
+
 var index = require('./routes/index');
 var users = require('./routes/users');
-var questions = require('./routes/questions');
+
 var cookieParser = require('cookie-parser');
 var app = express();
 use=0;
@@ -69,7 +67,7 @@ app.use(function (req, res, next) {
 });
 app.use('/', index);
 app.use('/users', users);
-app.use('/questions', questions);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

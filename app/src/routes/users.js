@@ -3,7 +3,7 @@ var router = express.Router();
 var multer=require('multer');
 var flash = require('connect-flash');
 var upload=multer({dest: 'public/uploads/'});
-var user=require('../models/user');
+
 var request = require('request');
 var passport=require('passport');
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;

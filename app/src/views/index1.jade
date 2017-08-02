@@ -1,0 +1,42 @@
+extends layout1
+
+block content
+
+    
+    section#banner
+      h1 Test Your Brain
+      h1 Welcome #{users}
+     if profileimage
+      .inner
+         .flex.flex-4(style='position:absolute;top:60px;left:100px;')
+           .box.person
+             .image.round
+                img(src="/uploads/"+profileimage, alt='Person 1')
+             h3    &nbsp &nbsp  HELLO #{users}
+             
+           
+    
+    .inner
+         
+         .flex.flex-4
+             
+           .box.person
+             .image.round
+               img(src="../../images/ready.jpg", alt='Person 1')
+             
+             
+           .box.person
+             .image.round
+               img(src="../../images/set.jpg", alt='Person 1')
+             
+             
+           .box.person
+             .image.round
+               img(src="../../images/go.jpg", alt='Person 1')
+             
+            
+
+             
+section#two.wrapper.style1.special
+        .inner
+        h1 powered by Balvinder

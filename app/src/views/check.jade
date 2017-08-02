@@ -1,0 +1,11 @@
+extends layout1
+block content
+ form(action='/users/check', method='post',enctype='multipart/form-data')
+      .container
+        label
+          b Enter New Password
+        input(type='password', placeholder='Enter Password', name='password',required='')
+        label
+          b Confirm New Password
+        input(type='password', placeholder='Confirm Password', name='password2',required='')
+        button(type='submit',value='Upload') Update

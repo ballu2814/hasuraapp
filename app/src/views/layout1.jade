@@ -1,0 +1,23 @@
+head
+  title QUIZ APP
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  link(rel='stylesheet', href='stylesheets/main.css')
+  
+body(background='../../images/banner.jpg')
+  header#header
+    .inner
+      nav#nav
+        a(href='/') <font size="4">Home</font>
+        if !use
+         a(href='/users/register') <font size="4"> Register</font>
+         a(href='/users/login')  <font size="4">Login</font>
+         a(href='/about')  <font size="4">About Us</font>
+        if use  
+         a(href='/users/quiz') <font size="4">Take Quiz</font>
+         
+         a(href='/users/logout1') <font size="4">Logout</font>
+         a(href='/about')  <font size="4">About Me</font>
+      a.navPanelToggle(href='#navPanel')
+        span.fa.fa-bars
+block content

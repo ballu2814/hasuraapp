@@ -236,10 +236,11 @@ xhr = new XMLHttpRequest();
     if(xhr.readyState == 4 && xhr.status == 200){
       var json = JSON.parse(xhr.responseText);
       res.cookie("auth",json.auth_token);
+    
       //document.cookie="auth="+json.auth_token;
       hasura_id = json.hasura_id;
       auth_token = "Bearer "+json.auth_token;
-      console.log(auth_token);
+      console.log(json);
       res.redirect('/');
       
     }
@@ -300,6 +301,7 @@ request(options, function (error, response, body) {
     auth_token="";
     router.usernm='';
     res.clearCookie("auth");
+    res.clearCookie("username");
     res.redirect('/');
 
   }
@@ -314,26 +316,24 @@ request(options, function (error, response, body) {
 
 });
 
-router.checkuser=function load(req) {
+router.checkuser=function load(req,res) {
   var auth="Bearer "+req.cookies.auth;
-   xhr = new XMLHttpRequest();
+  var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://auth.gamut45.hasura-app.io/user/account/info', true);
 if(auth_token){
 xhr.setRequestHeader("Authorization", auth);}
 xhr.withCredentials = "true";
   xhr.onreadystatechange = function() {
-    if (xhr.readyState === 4&& xhr.status==200) {
+    if (xhr.readyState == 4&&xhr.status==200) {
       console.log(xhr.responseText +" yes");
       var user2=JSON.parse(xhr.responseText);
+      res.cookie("username",user2.username);
         router.usernm=user2.username;
       console.log(router.usernm);
-      
-       //Outputs a DOMString by default
     }
-    else{
-      
-    }
-  }
+else{
+}    
+ }
 
 xhr.send(null);
 
